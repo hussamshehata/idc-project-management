@@ -1,7 +1,9 @@
-import Sidebar from "@/layouts/Sidebar.jsx";
-import Header from "@/layouts/Header.jsx";
+import { Outlet } from "react-router-dom";
 
-export default function DashboardLayout({ children }) {
+import Sidebar from "@/layouts/Sidebar";
+import Header from "@/layouts/Header";
+
+export default function DashboardLayout() {
     return (
         <div className="flex min-h-screen bg-neutral-50">
             <Sidebar />
@@ -10,7 +12,7 @@ export default function DashboardLayout({ children }) {
                 <Header />
 
                 <main className="flex-1 p-8">
-                    {children}
+                    <Outlet />
                 </main>
             </div>
         </div>
