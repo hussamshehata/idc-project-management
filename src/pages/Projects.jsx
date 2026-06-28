@@ -1,16 +1,12 @@
+
+import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { useState } from "react";
-
 import CreateProjectDialog from "@/features/projects/components/CreateProjectDialog";
-import { initialProjects } from "@/features/projects/data/mockProjects";
 
+import { useProjects } from "@/context/ProjectsContext";
 export default function Projects() {
-    const [projects, setProjects] = useState(initialProjects);
-
-    function handleCreateProject(project) {
-        setProjects((prev) => [...prev, project]);
-    }
+const { projects, addProject } = useProjects();
 
     return (
         <div className="space-y-6">
@@ -22,7 +18,7 @@ export default function Projects() {
                     </p>
                 </div>
 
-                <CreateProjectDialog onCreate={handleCreateProject} />
+                <CreateProjectDialog onCreate={addProject} />
             </div>
 
             <div className="grid gap-4 md:grid-cols-3">
@@ -63,12 +59,20 @@ export default function Projects() {
                             key={project.id}
                             className="grid grid-cols-5 items-center gap-4 px-6 py-4 text-sm"
                         >
-                            <div className="font-medium text-neutral-950">{project.name}</div>
+                            <Link
+                                to={`/projects/${project.id}`}
+                                className="font-medium text-neutral-950 hover:underline"
+                            >
+                                {project.name}
+                            </Link>
+
                             <div className="text-neutral-500">{project.clientName}</div>
                             <div className="text-neutral-500">{project.projectType}</div>
+
                             <div>
                                 <Badge variant="secondary">{project.status}</Badge>
                             </div>
+
                             <div className="text-neutral-500">{project.targetEndDate}</div>
                         </div>
                     ))}

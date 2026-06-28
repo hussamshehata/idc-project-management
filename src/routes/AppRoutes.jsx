@@ -6,13 +6,14 @@ import Reports from "@/pages/Reports";
 import Settings from "@/pages/Settings";
 import Dashboard from "@/pages/Dashboard";
 import Projects from "@/pages/Projects";
-
+import ProjectDetails from "@/pages/ProjectDetails";
 export default function AppRoutes() {
     return (
         <Routes>
             <Route element={<DashboardLayout />}>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/projects" element={<Projects />} />
+                <Route path="/projects/:id" element={<ProjectDetails />} />
                 <Route path="/tasks" element={<Tasks />} />
                 <Route path="/time-tracking" element={<TimeTracking />} />
                 <Route path="/reports" element={<Reports />} />
