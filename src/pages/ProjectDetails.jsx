@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useProjects } from "@/context/ProjectsContext";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-
+import EditProjectDialog from "@/features/projects/components/EditProjectDialog";
 export default function ProjectDetails() {
     const { id } = useParams();
     const { projects } = useProjects();
@@ -22,13 +22,17 @@ export default function ProjectDetails() {
 
     return (
         <div className="space-y-6">
-            <div>
-                <h1 className="text-3xl font-bold">{project.name}</h1>
-                <p className="text-neutral-500">
-                    {project.clientName} • {project.location}
-                </p>
-            </div>
+            <div className="flex items-center justify-between">
+                <div>
+                    <h1 className="text-3xl font-bold">{project.name}</h1>
 
+                    <p className="text-neutral-500">
+                        {project.clientName} • {project.location}
+                    </p>
+                </div>
+
+                <EditProjectDialog project={project} />
+            </div>
             <Card>
                 <CardContent className="space-y-4 p-6">
                     <div>
