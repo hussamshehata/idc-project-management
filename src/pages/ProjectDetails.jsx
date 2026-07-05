@@ -3,7 +3,10 @@ import { useParams } from "react-router-dom";
 import { useProjects } from "@/context/ProjectsContext";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+
 import EditProjectDialog from "@/features/projects/components/EditProjectDialog";
+import DeleteProjectDialog from "@/features/projects/components/DeleteProjectDialog";
+
 export default function ProjectDetails() {
     const { id } = useParams();
     const { projects } = useProjects();
@@ -31,8 +34,12 @@ export default function ProjectDetails() {
                     </p>
                 </div>
 
-                <EditProjectDialog project={project} />
+                <div className="flex gap-2">
+                    <EditProjectDialog project={project} />
+                    <DeleteProjectDialog project={project} />
+                </div>
             </div>
+
             <Card>
                 <CardContent className="space-y-4 p-6">
                     <div>
