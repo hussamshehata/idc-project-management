@@ -1,11 +1,11 @@
-import DashboardLayout from "./layouts/DashboardLayout.jsx";
-import Dashboard from "./pages/Dashboard";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "@/routes/AppRoutes";
 
 function App() {
     return (
-        <DashboardLayout>
-            <Dashboard />
-        </DashboardLayout>
+        <BrowserRouter>
+            <AppRoutes />
+        </BrowserRouter>
     );
 }
 
