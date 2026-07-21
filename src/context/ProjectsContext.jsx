@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { initialProjects } from "@/features/projects/data/mockProjects";
+import { initialProjects } from "@/features/projects/phases/data/mockProjects";
 
 const ProjectsContext = createContext();
 

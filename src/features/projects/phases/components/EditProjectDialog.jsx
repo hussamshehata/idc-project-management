@@ -6,12 +6,12 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/components/ui/dialog.jsx";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button.jsx";
 
-import ProjectForm from "./ProjectForm";
-import { useProjects } from "@/context/ProjectsContext";
+import ProjectForm from "./ProjectForm.jsx";
+import { useProjects } from "@/context/ProjectsContext.jsx";
 
 export default function EditProjectDialog({ project }) {
     const { updateProject } = useProjects();
