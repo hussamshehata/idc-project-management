@@ -1,17 +1,24 @@
 // Displays tasks that belong to a specific phase
 
-import { initialTasks } from "../data/initialTasks";
+import { useTasks } from "@/context/TasksContext";
 
 import TaskList from "./TaskList";
+import CreateTaskDialog from "./CreateTaskDialog";
 
 
 export default function PhaseTasks({ phaseId }) {
 
 
-    // Get only tasks that belong to this phase
-    const phaseTasks = initialTasks.filter(
+    // Get tasks and add function from Context
+    const { tasks, addTask } = useTasks();
+
+
+
+    // Filter tasks for this phase only
+    const phaseTasks = tasks.filter(
         (task) => task.phaseId === phaseId
     );
+
 
 
     return (
@@ -19,21 +26,36 @@ export default function PhaseTasks({ phaseId }) {
         <div className="space-y-4">
 
 
-            {/* Section title */}
-            <div>
+            {/* Header */}
+            <div className="flex items-center justify-between">
 
-                <h2 className="text-xl font-bold">
-                    Phase Tasks
-                </h2>
 
-                <p className="text-sm text-neutral-500">
-                    Manage tasks inside this phase.
-                </p>
+                <div>
+
+                    <h2 className="text-xl font-bold">
+                        Phase Tasks
+                    </h2>
+
+                    <p className="text-sm text-neutral-500">
+                        Manage tasks inside this phase.
+                    </p>
+
+                </div>
+
+
+
+                {/* Create new task */}
+                <CreateTaskDialog
+                    phaseId={phaseId}
+                    onCreate={addTask}
+                />
+
 
             </div>
 
 
-            {/* Display tasks */}
+
+            {/* Task list */}
             <TaskList
                 tasks={phaseTasks}
             />
