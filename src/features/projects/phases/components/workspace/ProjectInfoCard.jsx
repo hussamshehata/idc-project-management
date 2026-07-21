@@ -1,7 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card.jsx";
 
 
-export default function ProjectStatusCard({ project }) {
+export default function ProjectInfoCard({ project }) {
 
 
     return (
@@ -12,11 +12,10 @@ export default function ProjectStatusCard({ project }) {
             <CardHeader>
 
                 <CardTitle>
-                    Timeline & Status
+                    Project Information
                 </CardTitle>
 
             </CardHeader>
-
 
 
 
@@ -26,12 +25,25 @@ export default function ProjectStatusCard({ project }) {
                 <div>
 
                     <p className="text-sm text-neutral-500">
-                        Current Phase
+                        Project Type
                     </p>
 
+                    <p className="font-medium">
+                        {project.projectType}
+                    </p>
+
+                </div>
+
+
+
+                <div>
+
+                    <p className="text-sm text-neutral-500">
+                        Design Style
+                    </p>
 
                     <p className="font-medium">
-                        {project.status}
+                        {project.style || "Not specified"}
                     </p>
 
                 </div>
@@ -42,12 +54,14 @@ export default function ProjectStatusCard({ project }) {
                 <div>
 
                     <p className="text-sm text-neutral-500">
-                        Start Date
+                        Area
                     </p>
 
-
                     <p className="font-medium">
-                        {project.startDate}
+                        {project.area
+                            ? `${project.area} m²`
+                            : "Not specified"
+                        }
                     </p>
 
                 </div>
@@ -58,16 +72,14 @@ export default function ProjectStatusCard({ project }) {
                 <div>
 
                     <p className="text-sm text-neutral-500">
-                        Target End Date
+                        Location
                     </p>
 
-
                     <p className="font-medium">
-                        {project.targetEndDate}
+                        {project.location}
                     </p>
 
                 </div>
-
 
 
             </CardContent>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge.jsx";
 
 
 export default function ProjectRow({ project }) {

@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import CreateProjectDialog from "@/features/projects/components/CreateProjectDialog";
-import ProjectFilters from "@/features/projects/components/ProjectFilters";
-import ProjectStats from "@/features/projects/components/ProjectStats";
-import ProjectTable from "@/features/projects/components/ProjectTable";
+import CreateProjectDialog from "@/features/projects/phases/components/CreateProjectDialog";
+import ProjectFilters from "@/features/projects/phases/components/ProjectFilters";
+import ProjectStats from "@/features/projects/phases/components/ProjectStats";
+import ProjectTable from "@/features/projects/phases/components/ProjectTable";
 
 import { useProjects } from "@/context/ProjectsContext";
 

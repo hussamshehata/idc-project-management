@@ -10,10 +10,10 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+} from "@/components/ui/alert-dialog.jsx";
 
-import { Button } from "@/components/ui/button";
-import { useProjects } from "@/context/ProjectsContext";
+import { Button } from "@/components/ui/button.jsx";
+import { useProjects } from "@/context/ProjectsContext.jsx";
 
 export default function DeleteProjectDialog({ project }) {
     const { deleteProject } = useProjects();
