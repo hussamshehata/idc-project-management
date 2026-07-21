@@ -1,83 +1,186 @@
+import { useState } from "react";
 
-import { Link } from "react-router-dom";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import CreateProjectDialog from "@/features/projects/components/CreateProjectDialog";
+import CreateProjectDialog from "@/features/projects/phases/components/CreateProjectDialog";
+import ProjectFilters from "@/features/projects/phases/components/ProjectFilters";
+import ProjectStats from "@/features/projects/phases/components/ProjectStats";
+import ProjectTable from "@/features/projects/phases/components/ProjectTable";
 
 import { useProjects } from "@/context/ProjectsContext";
+
+
 export default function Projects() {
-const { projects, addProject } = useProjects();
+
+
+    // Get projects data from global Context
+    const { projects, addProject } = useProjects();
+
+
+
+    // Search text entered by the user
+    const [search, setSearch] = useState("");
+
+
+
+    // Selected status filter
+    const [statusFilter, setStatusFilter] = useState("All");
+
+
+
+    // Selected project type filter
+    const [projectTypeFilter, setProjectTypeFilter] = useState("All");
+
+
+
+
+    /*
+        Derived state.
+
+        We do not store filtered projects.
+
+        Why?
+
+        Because filteredProjects depends on:
+        - projects
+        - search
+        - filters
+
+        React can calculate it whenever these values change.
+    */
+    const filteredProjects = projects.filter((project) => {
+
+
+        const term = search
+            .trim()
+            .toLowerCase();
+
+
+
+        const matchesSearch =
+            project.name
+                .toLowerCase()
+                .includes(term)
+            ||
+            project.clientName
+                .toLowerCase()
+                .includes(term);
+
+
+
+
+        const matchesStatus =
+            statusFilter === "All"
+            ||
+            project.status === statusFilter;
+
+
+
+
+        const matchesType =
+            projectTypeFilter === "All"
+            ||
+            project.projectType === projectTypeFilter;
+
+
+
+        return (
+            matchesSearch &&
+            matchesStatus &&
+            matchesType
+        );
+
+    });
+
+
+
 
     return (
+
         <div className="space-y-6">
+
+
+
+            {/* Page Header */}
             <div className="flex items-center justify-between">
+
+
                 <div>
-                    <h1 className="text-3xl font-bold text-neutral-950">Projects</h1>
+
+                    <h1 className="text-3xl font-bold text-neutral-950">
+                        Projects
+                    </h1>
+
+
                     <p className="text-sm text-neutral-500">
                         Manage interior design projects, phases, and delivery status.
                     </p>
+
+
                 </div>
 
-                <CreateProjectDialog onCreate={addProject} />
+
+
+
+                {/* Create new project */}
+                <CreateProjectDialog
+                    onCreate={addProject}
+                />
+
+
             </div>
 
-            <div className="grid gap-4 md:grid-cols-3">
-                <Card>
-                    <CardContent className="p-5">
-                        <p className="text-sm text-neutral-500">Total Projects</p>
-                        <h2 className="mt-2 text-3xl font-bold">{projects.length}</h2>
-                    </CardContent>
-                </Card>
 
-                <Card>
-                    <CardContent className="p-5">
-                        <p className="text-sm text-neutral-500">In Progress</p>
-                        <h2 className="mt-2 text-3xl font-bold">
-                            {projects.filter((project) => project.status === "In Progress").length}
-                        </h2>
-                    </CardContent>
-                </Card>
 
-                <Card>
-                    <CardContent className="p-5">
-                        <p className="text-sm text-neutral-500">Waiting Approval</p>
-                        <h2 className="mt-2 text-3xl font-bold">
-                            {projects.filter((project) => project.status === "Waiting Approval").length}
-                        </h2>
-                    </CardContent>
-                </Card>
-            </div>
 
-            <div className="rounded-2xl border bg-white">
-                <div className="border-b px-6 py-4">
-                    <h2 className="font-semibold">Project List</h2>
-                </div>
 
-                <div className="divide-y">
-                    {projects.map((project) => (
-                        <div
-                            key={project.id}
-                            className="grid grid-cols-5 items-center gap-4 px-6 py-4 text-sm"
-                        >
-                            <Link
-                                to={`/projects/${project.id}`}
-                                className="font-medium text-neutral-950 hover:underline"
-                            >
-                                {project.name}
-                            </Link>
+            {/* Search and Filters */}
+            <ProjectFilters
 
-                            <div className="text-neutral-500">{project.clientName}</div>
-                            <div className="text-neutral-500">{project.projectType}</div>
+                search={search}
 
-                            <div>
-                                <Badge variant="secondary">{project.status}</Badge>
-                            </div>
+                setSearch={setSearch}
 
-                            <div className="text-neutral-500">{project.targetEndDate}</div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+                statusFilter={statusFilter}
+
+                setStatusFilter={setStatusFilter}
+
+                projectTypeFilter={projectTypeFilter}
+
+                setProjectTypeFilter={setProjectTypeFilter}
+
+            />
+
+
+
+
+
+
+
+            {/* Project Statistics */}
+
+            <ProjectStats
+
+                projects={filteredProjects}
+
+            />
+
+
+
+
+
+
+
+            {/* Project List */}
+
+            <ProjectTable
+
+                projects={filteredProjects}
+
+            />
+
+
+
         </div>
+
     );
+
 }

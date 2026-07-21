@@ -1,0 +1,38 @@
+export const initialPhases = [
+    {
+        id: 1,
+        projectId: 1,
+        name: "Concept Design",
+        status: "In Progress",
+        startDate: "2026-07-01",
+        targetEndDate: "2026-07-15",
+        progress: 35,
+    },
+    {
+        id: 2,
+        projectId: 1,
+        name: "Design Development",
+        status: "Not Started",
+        startDate: "2026-07-16",
+        targetEndDate: "2026-07-31",
+        progress: 0,
+    },
+    {
+        id: 3,
+        projectId: 1,
+        name: "3D Visualization",
+        status: "Not Started",
+        startDate: "2026-08-01",
+        targetEndDate: "2026-08-15",
+        progress: 0,
+    },
+    {
+        id: 4,
+        projectId: 1,
+        name: "Shop Drawings",
+        status: "Not Started",
+        startDate: "2026-08-16",
+        targetEndDate: "2026-09-01",
+        progress: 0,
+    },
+];

@@ -5,9 +5,9 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import ProjectForm from "./ProjectForm";
+} from "@/components/ui/dialog.jsx";
+import { Button } from "@/components/ui/button.jsx";
+import ProjectForm from "./ProjectForm.jsx";
 
 export default function CreateProjectDialog({ onCreate }) {
     const [formData, setFormData] = useState({
