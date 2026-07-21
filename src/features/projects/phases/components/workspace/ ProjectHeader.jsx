@@ -1,7 +1,7 @@
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge.jsx";
 
-import EditProjectDialog from "@/features/projects/components/EditProjectDialog";
-import DeleteProjectDialog from "@/features/projects/components/DeleteProjectDialog";
+import EditProjectDialog from "@/features/projects/phases/components/EditProjectDialog.jsx";
+import DeleteProjectDialog from "@/features/projects/phases/components/DeleteProjectDialog.jsx";
 
 
 export default function ProjectHeader({ project }) {

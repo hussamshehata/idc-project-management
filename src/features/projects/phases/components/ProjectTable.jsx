@@ -1,4 +1,4 @@
-import ProjectRow from "./ProjectRow";
+import ProjectRow from "./ProjectRow.jsx";
 
 
 export default function ProjectTable({ projects }) {

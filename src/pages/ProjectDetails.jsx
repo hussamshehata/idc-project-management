@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 
 import { useProjects } from "@/context/ProjectsContext";
 
-import ProjectHeader from "@/features/projects/components/workspace/ ProjectHeader.jsx";
-import ProjectNavigation from "@/features/projects/components/workspace/ProjectNavigation";
-import ProjectOverview from "@/features/projects/components/workspace/ProjectOverview";
+import ProjectHeader from "@/features/projects/phases/components/workspace/ ProjectHeader.jsx";
+import ProjectNavigation from "@/features/projects/phases/components/workspace/ProjectNavigation";
+import ProjectOverview from "@/features/projects/phases/components/workspace/ProjectOverview";
 
 
 
