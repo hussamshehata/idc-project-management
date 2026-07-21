@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export default function PhaseCard({ phase }) {
     return (
@@ -69,9 +69,12 @@ export default function PhaseCard({ phase }) {
 
                 </div>
 
-                <Button>
+                <Link
+                    to={`/projects/${phase.projectId}/phases/${phase.id}`}
+                    className="flex h-10 w-full items-center justify-center rounded-md bg-neutral-900 text-sm font-medium text-white hover:bg-neutral-800"
+                >
                     Open Phase
-                </Button>
+                </Link>
 
             </CardContent>
 

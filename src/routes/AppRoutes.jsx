@@ -7,7 +7,8 @@ import Settings from "@/pages/Settings";
 import Dashboard from "@/pages/Dashboard";
 import Projects from "@/pages/Projects";
 import ProjectDetails from "@/pages/ProjectDetails";
-import ProjectPhases from "@/features/projects/phases/components/ProjectPhases";
+import ProjectPhasesPage from "@/features/projects/phases/pages/ProjectPhasesPage";
+import PhaseDetails from "@/features/projects/phases/pages/PhaseDetails.jsx";
 export default function AppRoutes() {
     return (
         <Routes>
@@ -15,8 +16,14 @@ export default function AppRoutes() {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/projects/:id" element={<ProjectDetails />} />
-                <Route path="/projects/:id/phases" element={<ProjectPhases />} />
+                <Route path="/projects/:id/phases" element={<ProjectPhasesPage />} />
+                <Route
+                    path="/projects/:id/phases/:phaseId"
+                    element={<PhaseDetails />}
+                />
+
                 <Route path="/tasks" element={<Tasks />} />
+
                 <Route path="/time-tracking" element={<TimeTracking />} />
                 <Route path="/reports" element={<Reports />} />
                 <Route path="/settings" element={<Settings />} />
