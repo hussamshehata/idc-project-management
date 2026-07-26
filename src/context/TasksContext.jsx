@@ -36,7 +36,9 @@ export function TasksProvider({ children }) {
             value={{
                 tasks,
                 addTask,
+                updateTask,
             }}
+
         >
 
             {children}
@@ -46,7 +48,22 @@ export function TasksProvider({ children }) {
     );
 
 }
+// Update existing task
+const updateTask = (updatedTask) => {
 
+    setTasks((currentTasks) =>
+
+        currentTasks.map((task) =>
+
+            task.id === updatedTask.id
+                ? updatedTask
+                : task
+
+        )
+
+    );
+
+};
 
 
 // Custom hook to use tasks anywhere
