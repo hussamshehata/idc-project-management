@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import EditTaskDialog from "./EditTaskDialog";
 import { useTasks } from "@/context/TasksContext";
+import TimeTracking from "./TimeTracking";
 export default function TaskCard({ task }) {
     const { updateTask } = useTasks();
     return (
@@ -77,6 +78,9 @@ export default function TaskCard({ task }) {
                     <p>
                         {task.actualHours}h / {task.estimatedHours}h
                     </p>
+
+                    {/* Time Tracking */}
+                    <TimeTracking />
 
                 </div>
                 {/* Edit task button */}

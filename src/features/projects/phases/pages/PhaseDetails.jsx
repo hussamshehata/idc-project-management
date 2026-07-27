@@ -109,7 +109,6 @@ export default function PhaseDetails() {
             </Card>
 
 
-
             {/* Tasks inside this phase */}
             <PhaseTasks
                 phaseId={phase.id}
